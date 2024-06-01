@@ -4,6 +4,9 @@ const express = require("express");
 const mongoose = require("mongoose"); // require package
 const morgan = require("morgan");
 
+// ===================Import Models====================
+const HorrorModel = require('./models/horrorMovies');
+
 const app = express();
 mongoose.connect(process.env.MONGODB_URI)
 
@@ -26,6 +29,18 @@ app.use(morgan('dev'));
 //==================Routes======================
 
 // The Create Routes==============================
+app.get('/movies/new', (req, res) => {
+  console.log(req.body)
+  res.render('movies/new.ejs')
+})
+
+app.post('/movies', async (req, res) => {
+  const movie = await HorrorModel.create(req.body);
+  console.log(movie);
+  res.redirect('/movies');
+})
+
+
 
 // The Read Routes================================
 
