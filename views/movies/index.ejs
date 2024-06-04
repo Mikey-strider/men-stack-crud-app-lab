@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <a href="/movies/new">Add a Horror Movie</a>
+  </header>
+  <h1>All our favorite Horror Movies</h1>
+  <ul>
+    <% horrorDocs.forEach(horror => { %>
+    <li>
+      <a href="/movies/<%= horror._id%>">
+        <%= horror.name %>
+      </a>
+    </li>
+    <% }) %>
+  </ul>
+</body>
+
+</html>

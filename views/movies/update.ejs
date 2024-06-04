@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+  <a href="/movies">Return Home</a>
+  <header>
+    <h1>Update your movie here!</h1>
+  </header>
+  <form action="/movies/<%= horrorDoc._id %>?_method=PUT" method="POST">
+    <label for="name">Update movie!</label>
+    <input type="text" name="name" id="name" value="<%= horrorDoc.name %>">
+    <label for="description">Update Description</label>
+    <textarea name="description" id="description" value="<%= horrorDoc.description %>"></textarea>
+    <label for="image">Replace Image:</label>
+    <input type="file" name="image" id="image" value="<%= horrorDoc.image %>"/>
+    <button type="submit">Add Horror Movie</button>
+  </form>
+  <%- include('../partials/footer') %>

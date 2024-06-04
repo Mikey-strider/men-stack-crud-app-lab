@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+
+  <a href="/movies">The rest of our selection!</a>
+  <h1><%= horrorDoc.name %></h1>
+  <div>
+    <p><%= horrorDoc.description %></p>
+    <img src="<%= horrorDoc.image %>" alt="">
+  </div>
+  <form action="/movies/<%= horrorDoc._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete Movie</button>
+  </form>
+  <a href="/movies/<%= horrorDoc._id %>/update">Update <%= horrorDoc.name %></a>
+  <%- include('../partials/footer') %>
