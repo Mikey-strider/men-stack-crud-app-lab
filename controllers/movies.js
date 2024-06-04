@@ -57,7 +57,7 @@ const edit = async (req, res) => {
 
 }
 
-const updateMovie = async (req, res) => {
+const update = async (req, res) => {
   try {
     const updateHorror = await HorrorModel.findByIdAndUpdate(req.params.movieId, req.body, { new: true });
     res.redirect(`/movies/${req.params.movieId}`);
@@ -69,12 +69,12 @@ const updateMovie = async (req, res) => {
 
 
 
-module.export = {
+module.exports = {
   index,
   edit,
   show,
-  newOne,
+  new: newOne,
   create,
-  deleteMovie,
-  updateMovie,
+  delete: deleteMovie,
+  update,
 }

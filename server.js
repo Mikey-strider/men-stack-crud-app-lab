@@ -36,16 +36,16 @@ app.use(morgan('dev'));
 
 app.get('/movies/:moviesId/update', movieCtrl.edit);
 
-app.put('/movies/:movieId', movieCtrl.updateMovie);
+app.put('/movies/:movieId', movieCtrl.update);
 
 // The Delete Routes==============================
 
 
-app.delete('/movies/:movieId', movieCtrl.deleteMovie);
+app.delete('/movies/:movieId', movieCtrl.delete);
 
 
 // The Create Routes==============================
-app.get('/movies/new', movieCtrl.newOne);
+app.get('/movies/new', movieCtrl.new);
 
 app.post('/movies', movieCtrl.create);
 
@@ -67,5 +67,5 @@ app.get('/movies', movieCtrl.index);
 
 // /GET/
 app.get("/", async (req, res) => {
-  res.render("index.ejs");
+  res.redirect("/movies");
 });
