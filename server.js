@@ -4,21 +4,16 @@
 const dotenv = require("dotenv"); // require package
 dotenv.config(); // Loads the environment variables from .env file
 const express = require("express");
-const mongoose = require("mongoose"); // require package
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 const path = require('path')
 
+const movieCtrl = require('./controllers/movies');
 
-
-const HorrorModel = require('./models/horrorMovies');
 
 const app = express();
-mongoose.connect(process.env.MONGODB_URI)
 
-mongoose.connection.on("connected", () => {
-  console.log(`Connected to mongoDB ${mongoose.connection.name}.`);
-});
+require('./config/database.js');
 app.listen(3000, () => {
   console.log("Listening on port 3000!!")
 })
@@ -39,61 +34,32 @@ app.use(morgan('dev'));
 
 // The Edit Routes================================
 
-app.get('/movies/:moviesId/update', async (req, res) => {
-  const horrorDoc = await HorrorModel.findByIdAndUpdate(req.params.moviesId)
-  res.render('movies/update.ejs', {horrorDoc: horrorDoc})
-})
+app.get('/movies/:moviesId/update', movieCtrl.edit);
 
-app.put('/movies/:movieId', async (req, res) => {
-  const updateHorror = await HorrorModel.findByIdAndUpdate(req.params.movieId, req.body, {new: true});
-  res.redirect(`/movies/${req.params.movieId}`);
-});
+app.put('/movies/:movieId', movieCtrl.updateMovie);
 
 // The Delete Routes==============================
 
 
-app.delete('/movies/:movieId', async (req, res) => {
-  const deletedMovie = await HorrorModel.findByIdAndDelete(req.params.fruitId);
-  res.redirect('/movies');
-})
+app.delete('/movies/:movieId', movieCtrl.deleteMovie);
 
 
 // The Create Routes==============================
-app.get('/movies/new', (req, res) => {
-  console.log(req.body)
-  res.render('movies/new.ejs')
-})
+app.get('/movies/new', movieCtrl.newOne);
 
-app.post('/movies', async (req, res) => {
-  const movie = await HorrorModel.create(req.body);
-  console.log(movie);
-  res.redirect('/movies');
-})
+app.post('/movies', movieCtrl.create);
 
 
 // The Show Routes================================
 
-app.get('/movies/:movieId', async (req, res) => {
-  const horrorDoc = await HorrorModel.findById(req.params.movieId);
-  res.render('movies/show.ejs', {horrorDoc: horrorDoc});
-})
+app.get('/movies/:movieId', movieCtrl.show);
 
 
 // The Read Routes================================
 
 // The Index Routes===============================
 
-app.get('/movies', async (req, res) => {
-  const horrorDocs = await HorrorModel.find({});
-  res.render('movies/index.ejs', {horrorDocs: horrorDocs});
-})
-
-
-
-
-
-
-
+app.get('/movies', movieCtrl.index);
 
 
 
