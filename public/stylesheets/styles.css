@@ -1,3 +1,63 @@
-body{
-  background-color: red;
+body {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKOBZWf8O4uQotOgwD3xthJkTaPqfbxYX742YiGu0ciQNlFIckci8f0bbm6PIoemfe6w4&usqp=CAU);
+  background-color: #a33a02;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+
+h1 {
+  display: flex;
+  justify-content: center;
+  color: #b10101;
+  background-color: #230000;
+}
+
+a {
+  color: #230000;
+  border: 2px solid #230000;
+  background-color: #9f9494;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 3px;
+}
+
+img {
+  max-width: 300px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+p{
+  color:#dd0000;
+  background-color: #230000;
+}
+
+button {
+  color: #dd0000;
+  background-color: #230000;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+  color: #dd0000;
+  background-color: #230000;
+}
+
+input {
+  display: flex;
+  color: white;
+  background-color: black;
+}
+
+textarea {
+  color: white;
+  background-color: black;
 }

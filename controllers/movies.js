@@ -39,7 +39,7 @@ const create = async (req, res) => {
 
 const deleteMovie = async (req, res) => {
   try {
-    const deletedMovie = await HorrorModel.findByIdAndDelete(req.params.fruitId);
+    const deletedMovie = await HorrorModel.findByIdAndDelete(req.params.movieId);
     res.redirect('/movies');
   } catch (err) {
     res.send(err)
@@ -49,7 +49,7 @@ const deleteMovie = async (req, res) => {
 
 const edit = async (req, res) => {
   try {
-    const horrorDoc = await HorrorModel.findByIdAndUpdate(req.params.moviesId)
+    const horrorDoc = await HorrorModel.findByIdAndUpdate(req.params.movieId)
     res.render('movies/update.ejs', { horrorDoc })
   } catch (err) {
     res.send(err)
